@@ -40,10 +40,16 @@ IFS="$SEP" read -r dir model used size pct five five_reset week week_reset over_
   ' <<<"$input" 2>/dev/null
 )
 
+# ホームディレクトリ配下は ~ に置き換えて短く表示する
+dir="${dir:-$PWD}"
+if [ -n "$HOME" ] && { [ "$dir" = "$HOME" ] || [[ "$dir" == "$HOME"/* ]]; }; then
+  dir="~${dir#"$HOME"}"
+fi
+
 GREEN=$'\033[32m'; YELLOW=$'\033[33m'; RED=$'\033[31m'; CYAN=$'\033[36m'; DIM=$'\033[2m'; RESET=$'\033[0m'
 
 # 1 行目
-printf '%s[%s]%s %s\n' "$CYAN" "${dir:-$PWD}" "$RESET" "$model"
+printf '%s[%s]%s %s\n' "$CYAN" "$dir" "$RESET" "$model"
 
 # コンテキスト: 文字色で精度の目安を表す
 # SMART_RATIO 未満は緑(十分)、上限 80% 未満は黄(落ち始める)、それ以上は赤(下がっている)

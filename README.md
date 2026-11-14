@@ -323,13 +323,13 @@ LSP プラグインを有効にすると、Claude が定義へのジャンプ、
 表示例:
 
 ```
-[/Users/you/projects/app] Opus 5.5
+[~/projects/app] Opus 5.5
 ctx 95k/200k (47%) | セッション 23% (16:00) | 今週 41% (11/20 金 09:53)
 ```
 
 | 表示 | 意味 | 元のデータ |
 | --- | --- | --- |
-| `[...]` | 作業ディレクトリ | `workspace.current_dir` |
+| `[...]` | 作業ディレクトリ(ホームディレクトリ配下は `~` で表示) | `workspace.current_dir` |
 | `ctx 95k/200k (47%)` | 今のコンテキスト使用量 / このモデルで使える上限。文字色が精度の目安(下記) | `context_window.total_input_tokens`、`context_window_size`、`used_percentage` |
 | `セッション 23% (16:00)` | セッション(現在は 5 時間の枠)の利用上限に対する使用率と、リセット時刻 | `rate_limits.five_hour` |
 | `今週 41% (11/20 金 09:53)` | 7 日間の利用上限に対する使用率と、リセット日時(曜日つき) | `rate_limits.seven_day` |
