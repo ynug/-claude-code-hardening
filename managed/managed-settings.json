@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "enableAllProjectMcpServers": false,
+  "disableClaudeAiConnectors": true,
+  "strictKnownMarketplaces": [],
+  "permissions": {
+    "disableBypassPermissionsMode": "disable",
+    "disableAutoMode": "disable",
+    "blockReadsOutsideWorkingDirectories": true,
+    "blockWritesOutsideWorkingDirectories": true,
+    "deny": [
+      "Bash(git push)",
+      "Bash(git push *)",
+      "Bash(gh *)",
+      "Bash(wrangler *)",
+      "Bash(npx wrangler *)",
+      "Bash(security *)",
+      "Bash(op *)",
+      "Bash(ssh *)",
+      "Bash(scp *)",
+      "Edit(**/.git/hooks/**)",
+      "Edit(**/.git/config)",
+      "Read(**/.env)",
+      "Read(**/.env.*)",
+      "Read(**/.envrc)",
+      "Read(**/.dev.vars)",
+      "Read(**/secrets/**)",
+      "Read(**/*.pem)",
+      "Read(**/*.key)",
+      "Read(**/*.p12)",
+      "Read(**/*.pfx)",
+      "Read(**/*.keystore)",
+      "Read(**/*.jks)",
+      "Read(**/*.tfvars)",
+      "Read(**/credentials*)",
+      "Read(**/*service-account*.json)",
+      "Read(**/mise.local.toml)",
+      "Read(**/.mise.local.toml)",
+      "Read(~/.ssh/**)",
+      "Read(~/.aws/**)",
+      "Read(~/.netrc)",
+      "Read(~/.npmrc)",
+      "Read(~/Library/Preferences/.wrangler/**)",
+      "Read(~/Library/Keychains/**)"
+    ]
+  },
+  "sandbox": {
+    "enabled": true,
+    "allowUnsandboxedCommands": false,
+    "filesystem": {
+      "denyRead": [
+        "~/.ssh",
+        "~/.aws",
+        "~/Library/Keychains",
+        "~/Library/Preferences/.wrangler",
+        "~/Library/Group Containers/2BUA8C4S2C.com.1password"
+      ],
+      "denyWrite": [
+        "**/.git/hooks",
+        "**/.git/config",
+        "**/.github",
+        "**/.vscode",
+        "**/.envrc"
+      ]
+    }
+  }
+}
